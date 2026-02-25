@@ -1,0 +1,105 @@
+# LLM Prompt — Generate Resume Work Experience Entry
+
+Copy everything below the line into your LLM of choice (ChatGPT, Claude, etc.).
+
+---
+
+## PROMPT START
+
+You are an expert resume writer who specializes in tech resumes for software engineering internships. Your goal is to write the **Work Experience** section entry for the role described below. The output should be a polished, ATS-optimized bullet-point resume entry that **maximizes impact** and highlights a broad, impressive skill set.
+
+### CONTEXT ABOUT ME
+- I am seeking a **Software Developer Intern** position.
+- My title at Hoplon is **Software Developer** (full-stack, backend-leaning).
+- Dates: **February 2026 – Present**
+- This is a startup I am actively building — I am not just an employee, I am a **founding engineer / core contributor**.
+
+### ABOUT HOPLON
+Hoplon is an **enterprise-grade, multi-tenant SaaS platform** for location-aware workforce operations. It enables companies (construction, warehousing, field services, events) to define geofenced work zones, automatically track worker check-in/check-out via mobile devices, and provide administrators with real-time, immutable activity logs — answering "who was where, and when."
+
+The platform consists of:
+- **Admin Portal** (Next.js 16 web app) — company onboarding, geofence CRUD, admin management, real-time logs dashboard
+- **Mobile App** (React Native) — worker-facing app with company ID gating, phone OTP authentication, background geolocation tracking, permissions readiness
+- **Backend** (Convex serverless platform) — real-time data layer, multi-tenant access control, RBAC, event ingestion, audit logging
+- **Auth** (Clerk) — JWT-based authentication for both web and mobile, organization/membership management
+
+The codebase is a **Turborepo monorepo** with pnpm workspaces, shared packages for UI components, ESLint configs, and TypeScript configs. There are 10+ engineers on the team.
+
+### MY SPECIFIC CONTRIBUTIONS (verified from git history)
+I have authored/merged **15+ commits across 5+ pull requests**, contributed **960+ lines of code** (net additions), and served as the **PR reviewer/merger for critical backend infrastructure**. Specifically:
+
+1. **Designed and implemented the complete Convex database schema** (TICKET-0004) — 6 normalized tables (`companies`, `memberships`, `users`, `geofences`, `geofenceEvents`, `auditLogs`) with optimized compound indexes for multi-tenant query patterns, geofence versioning support, and immutable event log architecture.
+
+2. **Architected the server-side RBAC and multi-tenant authorization system** (TICKET-0005) — Built a composable guard middleware system (`requireSignedIn` → `requireCompanyContext` → `requireRole`) that enforces tenant isolation at the data layer. Implemented hierarchical role resolution (`worker < admin < super_admin`) with type-safe role literals derived from a single source of truth. Server-side tenancy resolution validates JWT claims against membership records — **zero client-trust for authorization**.
+
+3. **Engineered the Clerk ↔ Convex authentication integration** — Configured Convex auth provider to validate Clerk-issued JWTs, extracting `sub` (userId) and `org_id` (organization) server-side. Built identity extraction utilities and structured error handling with PII-safe logging (`AuthError` class with typed error codes: `UNAUTHENTICATED`, `INVALID_TOKEN`, `NO_ORG_CONTEXT`, `TENANCY_RESOLUTION_FAILED`, `FORBIDDEN_ROLE`).
+
+4. **Established the CI/CD pipeline** (TICKET-0003) — Authored the GitHub Actions workflow for the monorepo: lint, type-check, and test gates on every PR and push to main. Configured pnpm/Corepack caching, frozen lockfile installs, concurrency groups, least-privilege token permissions, and fail-fast with reproducibility instructions.
+
+5. **Defined the environment and configuration strategy** (TICKET-0002) — Designed the multi-environment setup (local/dev/stage/prod) across Next.js, React Native, Convex, and Clerk. Created `.env.example` templates, documented secret handling, and established a config module with runtime validation for the mobile app. Contributed 669+ lines including full environment setup documentation.
+
+6. **Authored technical tickets and documentation** — Wrote TICKET-0017 (Clerk project setup & JWT configuration, 120+ lines), maintained AUTH_README documentation, and created detailed ADR context for the tenancy and auth model.
+
+7. **Code review and merge management** — Reviewed and merged PRs #57–#60, ensuring code quality and architectural consistency for the backend auth system across multiple contributors' work.
+
+### TECHNOLOGIES I WANT HIGHLIGHTED ON MY RESUME
+These are the technologies and skills I want explicitly surfaced in the bullet points. Weave them in naturally — don't just list them:
+
+**Languages & Frameworks:**
+- TypeScript, JavaScript (ES2024+)
+- React 19, Next.js 16 (App Router, Server Components)
+- React Native (0.81, new architecture)
+- Node.js
+
+**Backend & Data:**
+- Convex (serverless backend — real-time queries, mutations, subscriptions)
+- Database schema design (normalized tables, compound indexes, versioning)
+- REST/real-time API design
+- Multi-tenant data architecture
+- Role-Based Access Control (RBAC)
+- JWT authentication & authorization
+- Clerk (identity provider integration)
+- Audit logging & immutable event sourcing
+
+**Frontend:**
+- ReactJS, modern component patterns (composable guards, provider patterns)
+- Tailwind CSS v4, shadcn/ui, Radix UI (headless primitives)
+- Responsive design, mobile-first UI
+
+**DevOps & Tools:**
+- Git & GitHub (branching, PR review, merge management)
+- GitHub Actions CI/CD (YAML pipelines, caching, concurrency)
+- Turborepo (monorepo orchestration, dependency-aware builds)
+- pnpm workspaces (package management)
+- Docker (dev containers, containerized development environments)
+- ESLint, Prettier (code quality automation)
+- Jest (testing framework)
+
+**Mobile:**
+- React Native background geolocation (Transistor Software SDK)
+- iOS/Android permissions and background task management
+- AsyncStorage, Metro bundler
+
+**Architecture & Practices:**
+- Monorepo architecture (Turborepo + pnpm)
+- Multi-tenant SaaS design
+- Server-side authorization (zero client-trust)
+- Structured error handling with typed error codes
+- Environment isolation strategy (dev/stage/prod)
+- Technical documentation (ADRs, READMEs, tickets)
+- Agile/sprint-based development
+
+### OUTPUT REQUIREMENTS
+1. **Format**: A single Work Experience entry with:
+   - Company name, title, dates, and a 1-line company description
+   - 6–8 bullet points (each 1–2 lines max)
+   - Use **strong action verbs** (Architected, Engineered, Designed, Implemented, Spearheaded, Established, Automated, Optimized)
+2. **Tone**: Confident, technical, and quantified where possible. This should read like a **senior-level engineer's resume** — not a junior intern.
+3. **ATS optimization**: Naturally embed keywords from the tech list above. Each bullet should mention 2–3 specific technologies.
+4. **Magnify impact**: Frame contributions as leadership and ownership — I didn't just "help," I **architected**, **designed**, and **engineered** core infrastructure. Emphasize that this is a **founding engineer** role at a startup.
+5. **Show breadth**: The bullets should collectively demonstrate: backend architecture, frontend capability, mobile awareness, DevOps/CI, security/auth, database design, documentation, and team leadership (code review).
+6. Give me **two versions**:
+   - **Version A**: Maximum detail (for a full-page resume with fewer entries)
+   - **Version B**: Condensed (4–5 bullets, for a resume with multiple roles)
+
+## PROMPT END
