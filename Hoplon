@@ -1,17 +1,6 @@
-# LLM Prompt — Generate Resume Work Experience Entry
-
-Copy everything below the line into your LLM of choice (ChatGPT, Claude, etc.).
-
----
-
-## PROMPT START
-
-You are an expert resume writer who specializes in tech resumes for software engineering internships. Your goal is to write the **Work Experience** section entry for the role described below. The output should be a polished, ATS-optimized bullet-point resume entry that **maximizes impact** and highlights a broad, impressive skill set.
-
 ### CONTEXT ABOUT ME
-- I am seeking a **Software Developer Intern** position.
 - My title at Hoplon is **Software Developer** (full-stack, backend-leaning).
-- Dates: **February 2026 – Present**
+- Dates: **January 2026 – Present**
 - This is a startup I am actively building — I am not just an employee, I am a **founding engineer / core contributor**.
 
 ### ABOUT HOPLON
@@ -42,8 +31,8 @@ I have authored/merged **15+ commits across 5+ pull requests**, contributed **96
 
 7. **Code review and merge management** — Reviewed and merged PRs #57–#60, ensuring code quality and architectural consistency for the backend auth system across multiple contributors' work.
 
-### TECHNOLOGIES I WANT HIGHLIGHTED ON MY RESUME
-These are the technologies and skills I want explicitly surfaced in the bullet points. Weave them in naturally — don't just list them:
+### TECHNOLOGIES
+These are the technologies and skills I used and might have even learned on the job. Can be put in bullet points if suitable:
 
 **Languages & Frameworks:**
 - TypeScript, JavaScript (ES2024+)
@@ -88,18 +77,3 @@ These are the technologies and skills I want explicitly surfaced in the bullet p
 - Environment isolation strategy (dev/stage/prod)
 - Technical documentation (ADRs, READMEs, tickets)
 - Agile/sprint-based development
-
-### OUTPUT REQUIREMENTS
-1. **Format**: A single Work Experience entry with:
-   - Company name, title, dates, and a 1-line company description
-   - 6–8 bullet points (each 1–2 lines max)
-   - Use **strong action verbs** (Architected, Engineered, Designed, Implemented, Spearheaded, Established, Automated, Optimized)
-2. **Tone**: Confident, technical, and quantified where possible. This should read like a **senior-level engineer's resume** — not a junior intern.
-3. **ATS optimization**: Naturally embed keywords from the tech list above. Each bullet should mention 2–3 specific technologies.
-4. **Magnify impact**: Frame contributions as leadership and ownership — I didn't just "help," I **architected**, **designed**, and **engineered** core infrastructure. Emphasize that this is a **founding engineer** role at a startup.
-5. **Show breadth**: The bullets should collectively demonstrate: backend architecture, frontend capability, mobile awareness, DevOps/CI, security/auth, database design, documentation, and team leadership (code review).
-6. Give me **two versions**:
-   - **Version A**: Maximum detail (for a full-page resume with fewer entries)
-   - **Version B**: Condensed (4–5 bullets, for a resume with multiple roles)
-
-## PROMPT END
